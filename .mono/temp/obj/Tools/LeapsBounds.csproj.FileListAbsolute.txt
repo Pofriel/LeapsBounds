@@ -1,0 +1,5 @@
+/Users/patrickofriel/Documents/repos/LeapsBounds/.mono/temp/bin/Tools/LeapsBounds.dll
+/Users/patrickofriel/Documents/repos/LeapsBounds/.mono/temp/bin/Tools/LeapsBounds.pdb
+/Users/patrickofriel/Documents/repos/LeapsBounds/.mono/temp/obj/Tools/LeapsBounds.csprojAssemblyReference.cache
+/Users/patrickofriel/Documents/repos/LeapsBounds/.mono/temp/obj/Tools/LeapsBounds.dll
+/Users/patrickofriel/Documents/repos/LeapsBounds/.mono/temp/obj/Tools/LeapsBounds.pdb
