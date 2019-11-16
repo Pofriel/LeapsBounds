@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rocks_1.png-f9d1cef9f6144facb57e597f06327a06.stex"
+path="res://.import/icon.png-ec880de02d5dab0aa15458af9d6c53ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rocks_1.png"
-dest_files=[ "res://.import/Rocks_1.png-f9d1cef9f6144facb57e597f06327a06.stex" ]
+source_file="res://Assets/icon.png"
+dest_files=[ "res://.import/icon.png-ec880de02d5dab0aa15458af9d6c53ed.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

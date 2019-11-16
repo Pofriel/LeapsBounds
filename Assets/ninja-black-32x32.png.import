@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ice_1_3.png-0daba689ee96cfb4599b719cdb880f49.stex"
+path="res://.import/ninja-black-32x32.png-253d0af6256081cf7150037351d2cd06.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ice_1_3.png"
-dest_files=[ "res://.import/Ice_1_3.png-0daba689ee96cfb4599b719cdb880f49.stex" ]
+source_file="res://Assets/ninja-black-32x32.png"
+dest_files=[ "res://.import/ninja-black-32x32.png-253d0af6256081cf7150037351d2cd06.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

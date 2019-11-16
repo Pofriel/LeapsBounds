@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ninja-black-32x32.png-c01bb4550a398f95ef6f9faed2fae4d7.stex"
+path="res://.import/Rocks_1.png-185d7ad954247d7c1e66c16419952161.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ninja-black-32x32.png"
-dest_files=[ "res://.import/ninja-black-32x32.png-c01bb4550a398f95ef6f9faed2fae4d7.stex" ]
+source_file="res://Assets/Rocks_1.png"
+dest_files=[ "res://.import/Rocks_1.png-185d7ad954247d7c1e66c16419952161.stex" ]
 
 [params]
 
