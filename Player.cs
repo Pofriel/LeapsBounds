@@ -5,7 +5,7 @@ public class Player : Godot.KinematicBody2D
 {
     
     [Export]
-    public int Speed = 200;
+    public int Speed = 100;
 
     Vector2 velocity = new Vector2();
 
@@ -18,11 +18,15 @@ public class Player : Godot.KinematicBody2D
     public void GetInput() {
         velocity = new Vector2();
 
+        var spriteNode = GetNode<Sprite>("Sprite");
+
         if (Input.IsActionPressed("right")) {
+            spriteNode.FlipH = false;
             velocity.x += 1;
         }
 
         if (Input.IsActionPressed("left")) {
+            spriteNode.FlipH = true;
             velocity.x -= 1;
         }
 
