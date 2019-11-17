@@ -15,10 +15,15 @@ public class Player : Godot.KinematicBody2D
 
     public SelectionIndicator Indicator;
 
+    public AnimationPlayer AnimPlayer;
+
+    [Signal]
+    public delegate void ProtonLeap(bool isActive);
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
     public override void _Input(InputEvent @event) 
@@ -35,7 +40,9 @@ public class Player : Godot.KinematicBody2D
 
     private void _StartSelectionMode() {
         SelectionMode = true;
-        MoveAndSlide(new Vector2(0, 0)); 
+        EmitSignal(nameof(ProtonLeap), true);
+        velocity = new Vector2(0, 0);
+        MoveAndSlide(velocity); 
         Indicator = IndicatorScene.Instance() as SelectionIndicator;
         AddChild(Indicator);
     }
@@ -45,6 +52,7 @@ public class Player : Godot.KinematicBody2D
         RemoveChild(Indicator);
         Indicator.QueueFree();
         SelectionMode = false;
+        EmitSignal(nameof(ProtonLeap), false);
     }
 
     public void GetInput() {
@@ -71,16 +79,18 @@ public class Player : Godot.KinematicBody2D
                 velocity.y -= 1;
             }
 
-            var animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-
             if (velocity.Length() > 0) {
-                animationPlayer.Play("Walk");
+                AnimPlayer.Play("Walk");
             } else {
-                animationPlayer.Play("Idle");
+                AnimPlayer.Play("Idle");
             }
        
 
             velocity = velocity.Normalized() * Speed;
+        }
+        else {
+            velocity = new Vector2(0, 0);
+            AnimPlayer.Stop();
         }
         
     }
