@@ -4,7 +4,7 @@ using System;
 public class Camera2D : Godot.Camera2D
 {
     [Export]
-    Vector2 DesiredResolution = new Vector2(512, 300);
+    Vector2 DesiredResolution = new Vector2(256, 150);
 
     Viewport view;
 
