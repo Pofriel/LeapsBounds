@@ -13,9 +13,11 @@ public class Player : Godot.KinematicBody2D
 
     public PackedScene IndicatorScene = GD.Load<PackedScene>("res://SelectionIndicator.tscn");
 
-    public SelectionIndicator Indicator;
+    SelectionIndicator Indicator;
 
-    public AnimationPlayer AnimPlayer;
+    AnimationPlayer AnimPlayer;
+
+    Camera2D ChildCam;
 
     [Signal]
     public delegate void ProtonLeap(bool isActive);
@@ -24,6 +26,7 @@ public class Player : Godot.KinematicBody2D
     public override void _Ready()
     {
         AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        ChildCam = GetNode<Camera2D>("Camera2D");
     }
 
     public override void _Input(InputEvent @event) 
@@ -40,6 +43,7 @@ public class Player : Godot.KinematicBody2D
 
     private void _StartSelectionMode() {
         SelectionMode = true;
+        ChildCam.Current = false;
         EmitSignal(nameof(ProtonLeap), true);
         velocity = new Vector2(0, 0);
         MoveAndSlide(velocity); 
@@ -52,6 +56,7 @@ public class Player : Godot.KinematicBody2D
         RemoveChild(Indicator);
         Indicator.QueueFree();
         SelectionMode = false;
+        ChildCam.Current = true;
         EmitSignal(nameof(ProtonLeap), false);
     }
 

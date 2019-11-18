@@ -85,4 +85,3 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 editor_draw_limits = true
 script = ExtResource( 3 )
-DesiredResolution = Vector2( 256, 150 )

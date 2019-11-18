@@ -8,6 +8,8 @@ public class SelectionIndicator : Node2D
 
     public Vector2 SpriteSize;
 
+    public Camera2D ChildCam;
+
     public override void _Input(InputEvent @event) 
     {
         Vector2 newPosition = new Vector2(Position.x, Position.y);
@@ -21,14 +23,14 @@ public class SelectionIndicator : Node2D
             newPosition.y = newPosition.y - SpriteSize.y;
         }
         
-
         Position = newPosition; 
-
     }
 
     public override void _Ready()
     {
         Sprite = GetNode<Sprite>("Sprite");
+        ChildCam = GetNode<Camera2D>("Camera2D");
+        ChildCam.Current = true;
         SpriteSize = Sprite.GetTexture().GetSize();
 
         var animation = GetNode<AnimationPlayer>("AnimationPlayer");
