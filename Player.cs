@@ -22,6 +22,9 @@ public class Player : Godot.KinematicBody2D
     [Signal]
     public delegate void ProtonLeap(bool isActive);
 
+    [Signal]
+    public delegate void CreateBomb(Vector2 position);
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -52,11 +55,13 @@ public class Player : Godot.KinematicBody2D
     }
 
     private void _StopSelectionMode() {
+        var previousPosition = new Vector2(GlobalPosition.x, GlobalPosition.y);
         GlobalPosition = new Vector2(Indicator.GlobalPosition.x, Indicator.GlobalPosition.y);
         RemoveChild(Indicator);
         Indicator.QueueFree();
         SelectionMode = false;
         ChildCam.Current = true;
+        EmitSignal(nameof(CreateBomb), previousPosition);
         EmitSignal(nameof(ProtonLeap), false);
     }
 
