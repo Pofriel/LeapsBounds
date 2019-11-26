@@ -3,20 +3,40 @@ using System;
 
 public class Bomb : Node2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+
+    public bool Freeze = false;
+
+    Timer TimerNode;
+
+    AnimationPlayer AnimPlayer;
+
+    [Signal]
+    public delegate void Boom(Bomb exploder);
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        var animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        animationPlayer.Play("Idle");
+        AnimPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        AnimPlayer.Play("Idle");
+
+        TimerNode = GetNode<Timer>("Timer");
+        TimerNode.Connect("timeout", this, nameof(_OnTimerTimeout));
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    private void _OnTimerTimeout() {
+        if (!Freeze) {
+            EmitSignal("Boom", this);
+            QueueFree();
+        }
+    }
+
+    public override void _Process(float delta)
+    {
+        TimerNode.Paused = Freeze;
+        if (Freeze && AnimPlayer.IsPlaying()) {
+            AnimPlayer.Stop();
+        } else if (!Freeze && !AnimPlayer.IsPlaying()) {
+            AnimPlayer.Play("Idle");
+        }
+    }
 }
