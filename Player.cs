@@ -5,7 +5,7 @@ public class Player : Godot.KinematicBody2D
 {
     
     [Export]
-    public int Speed = 100;
+    public int Speed = 10;
 
     Vector2 velocity = new Vector2();
 
@@ -24,6 +24,9 @@ public class Player : Godot.KinematicBody2D
 
     [Signal]
     public delegate void CreateBomb(Vector2 position);
+
+    [Signal]
+    public delegate void PlayerKilled();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -109,6 +112,12 @@ public class Player : Godot.KinematicBody2D
     public override void _Process(float delta)
     {
         GetInput();
-        velocity = MoveAndSlide(velocity);    
+        var collision = MoveAndCollide(velocity * delta);    
+        if (collision != null) {
+            var collider = (collision.Collider) as CollisionObject2D;
+            if (collider.Name == "Enemy") {
+                EmitSignal("PlayerKilled");
+            }
+        } 
     }
 }
