@@ -75,12 +75,10 @@ public class Player : Godot.KinematicBody2D
             var spriteNode = GetNode<Sprite>("Sprite");
 
             if (Input.IsActionPressed("right")) {
-                spriteNode.FlipH = false;
                 velocity.x += 1;
             }
 
             if (Input.IsActionPressed("left")) {
-                spriteNode.FlipH = true;
                 velocity.x -= 1;
             }
 
@@ -92,8 +90,14 @@ public class Player : Godot.KinematicBody2D
                 velocity.y -= 1;
             }
 
-            if (velocity.Length() > 0) {
+            if (velocity.y > 0) {
                 AnimPlayer.Play("Walk");
+            } else if (velocity.y < 0) {
+                AnimPlayer.Play("WalkBack");
+            } else if (velocity.x > 0) {
+                AnimPlayer.Play("WalkRight");
+            } else if (velocity.x < 0) {
+                AnimPlayer.Play("WalkLeft");
             } else {
                 AnimPlayer.Play("Idle");
             }
