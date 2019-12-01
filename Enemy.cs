@@ -16,7 +16,21 @@ public class Enemy : KinematicBody2D
     
     public override void _Ready()
     {
-        Velocity = new Vector2(XSpeed, 0);
+        // choose random direction.
+        var dirVector = new Vector2();
+        var random = new Random();
+        var dirInt = random.Next(0, 3);
+        if (dirInt == 0) {
+            dirVector.x = 1;
+        } else if (dirInt == 1) {
+            dirVector.x = -1;
+        } else if (dirInt == 2) {
+            dirVector.y = 1;
+        } else {
+            dirVector.y = -1;
+        }
+
+         Velocity = dirVector * XSpeed;
     }
 
     [Export]
@@ -26,17 +40,17 @@ public class Enemy : KinematicBody2D
     public override void _Process(float delta)
     {
         if (!Freeze) {
-            TimeWalkin += delta;
-            if (TimeWalkin > WalkLimit) {
-                XSpeed *= -1;
-                TimeWalkin = 0;
+            var collision = MoveAndCollide(Velocity * delta);
+            if (collision != null)
+            {          
+                var reflect = collision.Remainder.Bounce(collision.Normal);
+                Velocity = Velocity.Bounce(collision.Normal);
+                MoveAndCollide(reflect);
             }
-            Velocity = new Vector2(XSpeed, 0);
-            Velocity = MoveAndSlide(Velocity);
+
         }
         else {
-            Velocity = new Vector2(0, 0);
-            Velocity = MoveAndSlide(Velocity);
+            MoveAndCollide(new Vector2(0, 0));
         }
         
     }

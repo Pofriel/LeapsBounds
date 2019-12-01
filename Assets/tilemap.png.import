@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Lava_2.png-a68d4546268c1132e60b477e90f28d98.stex"
+path="res://.import/tilemap.png-fbb7d040985d294f094a5740961103d2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Lava_2.png"
-dest_files=[ "res://.import/Lava_2.png-a68d4546268c1132e60b477e90f28d98.stex" ]
+source_file="res://Assets/tilemap.png"
+dest_files=[ "res://.import/tilemap.png-fbb7d040985d294f094a5740961103d2.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

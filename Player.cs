@@ -119,7 +119,7 @@ public class Player : Godot.KinematicBody2D
         var collision = MoveAndCollide(velocity * delta);    
         if (collision != null) {
             var collider = (collision.Collider) as CollisionObject2D;
-            if (collider.Name == "Enemy") {
+            if (collider.GetType().ToString() == "Enemy") {
                 EmitSignal("PlayerKilled");
             }
         } 
